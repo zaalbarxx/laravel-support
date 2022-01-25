@@ -30,6 +30,11 @@ class AppVersion
         return $this->major() === 9;
     }
 
+    public function is(string $version, string $comparator = '>='): bool
+    {
+        return version_compare($this->version(), $version, $comparator);
+    }
+
     public function major(): int
     {
         return (int) Str::before($this->version(), '.');
